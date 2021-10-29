@@ -1,0 +1,30 @@
+import { IUser } from '../interfaces/entities/user';
+import { IUserService } from '../interfaces/service';
+import { User } from '../models/user';
+
+export class UserService implements IUserService {
+  private _repository = User;
+
+  async read(id: string): Promise<User | null | undefined> {
+    return await this._repository.findOne(id);
+  }
+
+  async reads(input?: IUser): Promise<User[] | null | undefined> {
+    return await this._repository.find(input);
+  }
+
+  async delete(id: string): Promise<User | null | undefined> {
+    const user = await this._repository.findOne(id);
+    if (!user) throw new Error('Resource not found');
+    return await user.remove();
+  }
+
+  async update(id: string, input?: IUser): Promise<User | null | undefined> {
+    const user = await this._repository.update(id, { ...input });
+    return user.raw;
+  }
+
+  async create(input: IUser): Promise<User> {
+    return await this._repository.create(input).save();
+  }
+}

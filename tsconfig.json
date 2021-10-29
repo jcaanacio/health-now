@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "incremental": true,
+    "lib": ["esnext"],
+    "target": "ES2019",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "sourceMap": true,
+    "strict": true,
+    "skipLibCheck": true,
+    "strictNullChecks": true,
+    "removeComments": true,
+    "noImplicitThis": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "esModuleInterop": true,
+    "strictPropertyInitialization": true,
+    "types": ["node", "mocha", "chai"],
+    "outDir": "build"
+  },
+  "exclude": ["node_modules"],
+  "include": ["src/**/*", "test/**/*", "index.ts"]
+}
