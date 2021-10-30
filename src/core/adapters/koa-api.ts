@@ -8,6 +8,8 @@ import {
   HealthNowHttpErrorHandler,
 } from './http-error-handler';
 import { TokenExpiredError } from 'jsonwebtoken';
+import { koaSwagger } from 'koa2-swagger-ui';
+import yamljs from 'yamljs';
 
 export class HealthNowKoaBackendServer implements IHealthNowBackendServer {
   private _koa: Koa;
@@ -27,6 +29,13 @@ export class HealthNowKoaBackendServer implements IHealthNowBackendServer {
 
     this._koa.use(koaBodyParser());
     this._koa.use(KoaCors({ origin: '*' }));
+
+    const spec = yamljs.load(`${process.cwd()}/api-docs.yaml`);
+
+    this._koa.use(
+      koaSwagger({ routePrefix: '/docs', swaggerOptions: { spec } })
+    );
+
     this._koa.use(async (ctx: Koa.Context, next: () => Promise<Koa.Next>) => {
       try {
         await next();

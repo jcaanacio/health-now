@@ -21,11 +21,13 @@
     "koa-combine-routers": "^4.0.2",
     "koa-cors": "^0.0.16",
     "koa-router": "^10.1.1",
+    "koa2-swagger-ui": "^5.2.1",
     "mysql": "^2.18.1",
     "ramda": "^0.27.1",
     "ts-node": "^10.4.0",
     "typeorm": "^0.2.38",
-    "winston": "^3.3.3"
+    "winston": "^3.3.3",
+    "yamljs": "^0.3.0"
   },
   "devDependencies": {
     "@types/bcrypt": "^5.0.0",
@@ -37,6 +39,7 @@
     "@types/mysql": "^2.15.19",
     "@types/ramda": "^0.27.46",
     "@types/validator": "^13.6.5",
+    "@types/yamljs": "^0.2.31",
     "nodemon": "^2.0.14"
   }
 }

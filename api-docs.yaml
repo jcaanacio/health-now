@@ -1,0 +1,242 @@
+swagger: '2.0'
+info:
+  version: '1.0'
+  title: Health Now
+  description: RESTFULL SERVICES
+  contact: {}
+host: localhost:8000
+basePath: /api
+securityDefinitions: {}
+schemes:
+  - http
+consumes:
+  - application/json
+produces:
+  - application/json
+paths:
+  /user:
+    post:
+      summary: Create
+      tags:
+        - User
+      operationId: Create
+      deprecated: false
+      produces:
+        - application/json
+      parameters:
+        - name: Authorization
+          in: header
+          required: false
+          default: Bearer {token}
+          type: string
+        - name: Body
+          in: body
+          required: true
+          description: ''
+          schema:
+            $ref: '#/definitions/CreateRequest'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+    get:
+      summary: Read
+      tags:
+        - User
+      operationId: Read
+      deprecated: false
+      produces:
+        - application/json
+      parameters:
+        - name: Authorization
+          in: header
+          required: false
+          default: Bearer {token}
+          type: string
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /user/{userId}:
+    get:
+      summary: Read by id
+      tags:
+        - User
+      operationId: Readbyid
+      deprecated: false
+      produces:
+        - application/json
+      parameters:
+        - name: Authorization
+          in: header
+          required: false
+          default: Bearer {token}
+          type: string
+        - name: userId
+          in: path
+          required: true
+          type: string
+          description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+    delete:
+      summary: Delete
+      tags:
+        - User
+      operationId: Delete
+      deprecated: false
+      produces:
+        - application/json
+      parameters:
+        - name: Authorization
+          in: header
+          required: false
+          default: Bearer {token}
+          type: string
+        - name: userId
+          in: path
+          required: true
+          type: string
+          description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+    patch:
+      summary: Update
+      tags:
+        - User
+      operationId: Update
+      deprecated: false
+      produces:
+        - application/json
+      parameters:
+        - name: Authorization
+          in: header
+          required: false
+          default: Bearer {token}
+          type: string
+        - name: userId
+          in: path
+          required: true
+          type: string
+          description: ''
+        - name: Body
+          in: body
+          required: true
+          description: ''
+          schema:
+            $ref: '#/definitions/UpdateRequest'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /auth:
+    post:
+      summary: Sign In
+      tags:
+        - Authentication
+      operationId: SignIn
+      deprecated: false
+      produces:
+        - application/json
+      parameters:
+        - name: Authorization
+          in: header
+          required: false
+          default: Bearer {token}
+          type: string
+      responses:
+        '200':
+          description: ''
+          headers: {}
+definitions:
+  CreateRequest:
+    title: CreateRequest
+    example:
+      email: jay@gmail.com
+      username: cyborg123
+      password: '1234'
+      firstname: Jay
+      lastname: Anacio
+      address: Caloocan
+      phone: 123456
+      postcode: 1400
+      role: USER
+    type: object
+    properties:
+      email:
+        type: string
+      username:
+        type: string
+      password:
+        type: string
+      firstname:
+        type: string
+      lastname:
+        type: string
+      address:
+        type: string
+      phone:
+        type: integer
+        format: int32
+      postcode:
+        type: integer
+        format: int32
+      role:
+        type: string
+    required:
+      - email
+      - username
+      - password
+      - firstname
+      - lastname
+      - address
+      - phone
+      - postcode
+      - role
+  UpdateRequest:
+    title: UpdateRequest
+    example:
+      email: aaaa@gmail.com
+      username: jaymanji
+      password: '12333'
+      firstname: Jay
+      lastname: Anacio
+      address: Caloocan
+      phone: 123456
+      postcode: 1400
+    type: object
+    properties:
+      email:
+        type: string
+      username:
+        type: string
+      password:
+        type: string
+      firstname:
+        type: string
+      lastname:
+        type: string
+      address:
+        type: string
+      phone:
+        type: integer
+        format: int32
+      postcode:
+        type: integer
+        format: int32
+    required:
+      - email
+      - username
+      - password
+      - firstname
+      - lastname
+      - address
+      - phone
+      - postcode
+tags:
+  - name: User
+  - name: Authentication
