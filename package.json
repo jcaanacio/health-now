@@ -8,7 +8,8 @@
     "docker-up": "docker-compose -f docker-compose.yaml up -d",
     "dev:local": "nodemon",
     "seed:create": "ts-node ./seeder.ts -i",
-    "seed:delete": "ts-node ./seeder.ts -d"
+    "seed:delete": "ts-node ./seeder.ts -d",
+    "start": "ts-node index.ts"
   },
   "keywords": [],
   "author": "",
