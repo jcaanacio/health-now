@@ -3,7 +3,11 @@ import { IHealthNowBackendServer, IHealthNowLogger } from '../interfaces/app';
 import Koa from 'koa';
 import koaBodyParser from 'koa-bodyparser';
 import KoaCors from 'koa-cors';
-import { HealthNowHttpErrorHandler } from './http-error-handler';
+import {
+  ExpiredTokenHttpError,
+  HealthNowHttpErrorHandler,
+} from './http-error-handler';
+import { TokenExpiredError } from 'jsonwebtoken';
 
 export class HealthNowKoaBackendServer implements IHealthNowBackendServer {
   private _koa: Koa;
@@ -30,6 +34,11 @@ export class HealthNowKoaBackendServer implements IHealthNowBackendServer {
         if (err instanceof HealthNowHttpErrorHandler) {
           ctx.body = err;
           ctx.status = err.status;
+        } else if (err instanceof TokenExpiredError) {
+          ctx.status = 401;
+          ctx.body = new ExpiredTokenHttpError();
+
+          return;
         }
         ctx.app.emit('error', err, ctx);
       }

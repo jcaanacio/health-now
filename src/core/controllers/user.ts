@@ -18,6 +18,7 @@ export class UserKoaController implements IController<Koa.Context, Koa.Next> {
       address,
       phone,
       postcode,
+      role,
     } = ctx.request.body;
 
     const user = await service.create({
@@ -29,6 +30,7 @@ export class UserKoaController implements IController<Koa.Context, Koa.Next> {
       address,
       postcode,
       phone,
+      role,
     });
 
     ctx.body = {
@@ -37,6 +39,7 @@ export class UserKoaController implements IController<Koa.Context, Koa.Next> {
 
     ctx.status = 201;
   }
+
   async read(ctx: Koa.Context, _next: () => Promise<Koa.Next>): Promise<void> {
     const users = await service.reads();
 
@@ -46,6 +49,7 @@ export class UserKoaController implements IController<Koa.Context, Koa.Next> {
 
     ctx.status = 200;
   }
+
   async readById(
     ctx: Koa.Context,
     _next: () => Promise<Koa.Next>
@@ -75,6 +79,7 @@ export class UserKoaController implements IController<Koa.Context, Koa.Next> {
       address,
       phone,
       postcode,
+      role,
     } = ctx.request.body;
 
     const user = await service.update(userId, {
@@ -86,9 +91,8 @@ export class UserKoaController implements IController<Koa.Context, Koa.Next> {
       address,
       postcode,
       phone,
+      role,
     });
-
-    console.log(user);
 
     ctx.body = {
       user: user,

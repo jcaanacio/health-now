@@ -7,4 +7,10 @@ export interface IUser {
   address?: string;
   phone?: number;
   postcode?: number;
+  role?: UserRole;
+}
+
+export enum UserRole {
+  ADMIN = 'ADMIN',
+  USER = 'USER',
 }

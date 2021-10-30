@@ -10,3 +10,8 @@ export interface IService<T, Entity> {
 }
 
 export type IUserService = IService<IUser, User>;
+
+export interface IAuthenticationService extends IService<IUser, User> {
+  signIn(input: string): Promise<string>;
+  signOut(input: { jwt: string }): Promise<IUser>;
+}
