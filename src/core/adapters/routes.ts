@@ -31,7 +31,7 @@ apiRouter.delete(
   '/user/',
   authController.protect,
   authController.admin,
-  userController.delete
+  userController.deleteMany
 );
 
 apiRouter.get('/debug/', userController.read);

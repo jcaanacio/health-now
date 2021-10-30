@@ -6,19 +6,21 @@ import {
   UpdateDateColumn,
   BaseEntity,
   BeforeInsert,
+  Index,
 } from 'typeorm';
 import { healthNowEncryption } from '../adapters/encryption';
 import { UserRole } from '../interfaces/entities/user';
 
 @Entity('user')
 export class User extends BaseEntity {
+  @Index()
   @PrimaryGeneratedColumn('uuid')
   id!: number;
 
-  @Column()
+  @Column({ unique: true })
   email!: string;
 
-  @Column()
+  @Column({ unique: true })
   username!: string;
 
   @Column()

@@ -2,6 +2,8 @@ import { HealthNowDatabase } from './src/core/adapters/database';
 import { HealthNowLogger } from './src/core/adapters/logger';
 import fs from 'fs';
 import { User } from './src/core/models/user';
+import { healthNowEncryption } from './src/core/adapters/encryption';
+import Bluebird from 'bluebird';
 
 const {
   TYPEORM_PASSWORD = 'password',
@@ -32,6 +34,15 @@ const importData = async () => {
   try {
     await database.start();
     const connection = database.dbConnection;
+    await Bluebird.map(users, async (user: { password: string }) => {
+      const password = user.password;
+      const salt = await healthNowEncryption.generateSalt(10);
+      const encryptedPassword = await healthNowEncryption.hash({
+        data: password,
+        salt,
+      });
+      user.password = encryptedPassword;
+    });
 
     await connection
       .createQueryBuilder()

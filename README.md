@@ -27,7 +27,7 @@ npm start
 
 ## Database Seeder
 
-To seed the database with users, bootcamps, courses and reviews with data from the "\_data" folder, run
+To seed the database with users with data from the "\_data" folder, run
 
 ```
 # Destroy all data
@@ -35,4 +35,12 @@ npm run seed:delete
 
 # Import all data
 npm run seed:create
+```
+
+## Documentation
+
+To view api documentation kindly see
+
+```
+# {host}:{port}/docs
 ```

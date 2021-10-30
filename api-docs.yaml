@@ -57,6 +57,30 @@ paths:
         '200':
           description: ''
           headers: {}
+    delete:
+      summary: Delete Many
+      tags:
+        - User
+      operationId: DeleteMany
+      deprecated: false
+      produces:
+        - application/json
+      parameters:
+        - name: Authorization
+          in: header
+          required: false
+          default: Bearer {token}
+          type: string
+        - name: Body
+          in: body
+          required: true
+          description: ''
+          schema:
+            $ref: '#/definitions/DeleteManyRequest'
+      responses:
+        '200':
+          description: ''
+          headers: {}
   /user/{userId}:
     get:
       summary: Read by id
@@ -156,8 +180,8 @@ definitions:
   CreateRequest:
     title: CreateRequest
     example:
-      email: jay@gmail.com
-      username: cyborg123
+      email: jayaaaa@gmail.com
+      username: juperman
       password: '1234'
       firstname: Jay
       lastname: Anacio
@@ -197,6 +221,20 @@ definitions:
       - phone
       - postcode
       - role
+  DeleteManyRequest:
+    title: DeleteManyRequest
+    example:
+      userIds:
+        - 6071f7ff-9ffb-4987-9cfa-6ee566eff658
+        - c6fcab75-3560-4a75-b37e-b39f9100940c
+    type: object
+    properties:
+      userIds:
+        type: array
+        items:
+          type: string
+    required:
+      - userIds
   UpdateRequest:
     title: UpdateRequest
     example:
