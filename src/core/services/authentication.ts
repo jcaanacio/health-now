@@ -18,6 +18,9 @@ export class AuthenticationService implements IAuthenticationService {
   constructor(opts: { encryptor: IHealthNowEncryption }) {
     this._encryptor = opts.encryptor;
   }
+  deleteMany(_id: string[]): Promise<User[] | null | undefined> {
+    throw new Error('Method not implemented.');
+  }
   create(_input: IUser): Promise<User> {
     throw new Error('Method not implemented.');
   }

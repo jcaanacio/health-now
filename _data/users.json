@@ -1,0 +1,134 @@
+[
+  {
+    "email": "johndoe@gmail.com",
+    "username": "johndoe",
+    "password": "1234",
+    "firstname": "John",
+    "lastname": "Doe",
+    "address": "Vegas",
+    "phone": 123456,
+    "postcode": 1400,
+    "role": "ADMIN"
+  },
+  {
+    "email": "marywilliams@gmail.com",
+    "username": "marywilliams",
+    "password": "1234",
+    "firstname": "Mary",
+    "lastname": "Williams",
+    "address": "Lower Antipolo",
+    "phone": 123456,
+    "postcode": 1500,
+    "role": "ADMIN"
+  },
+  {
+    "email": "kevinsmith@gmail.com",
+    "username": "kevinsmith",
+    "password": "1234",
+    "firstname": "Kevin",
+    "lastname": "Smith",
+    "address": "Upper Antipolo",
+    "phone": 123456,
+    "postcode": 1500,
+    "role": "USER"
+  },
+  {
+    "email": "sashagrey@gmail.com",
+    "username": "sashagrey",
+    "password": "1234",
+    "firstname": "Sasha",
+    "lastname": "Grey",
+    "address": "Miami Florida",
+    "phone": 123456,
+    "postcode": 1500,
+    "role": "USER"
+  },
+  {
+    "email": "gregharris@gmail.com",
+    "username": "gregharris",
+    "password": "1234",
+    "firstname": "Greg",
+    "lastname": "Harris",
+    "address": "Miami Florida",
+    "phone": 123456,
+    "postcode": 1500,
+    "role": "ADMIN"
+  },
+  {
+    "email": "gregharris@gmail.com",
+    "username": "derekglover",
+    "password": "1234",
+    "firstname": "Derek",
+    "lastname": "Glover",
+    "address": "Toronto Canada",
+    "phone": 123456,
+    "postcode": 1500,
+    "role": "USER"
+  },
+  {
+    "email": "stephaniehanson@gmail.com",
+    "username": "stephaniehanson",
+    "password": "1234",
+    "firstname": "Stephanie",
+    "lastname": "Hanson",
+    "address": "Toronto Canada",
+    "phone": 123456,
+    "postcode": 1990,
+    "role": "USER"
+  },
+  {
+    "email": "lebronjames@gmail.com",
+    "username": "lebronjames",
+    "password": "1234",
+    "firstname": "Lebron",
+    "lastname": "James",
+    "address": "Cleveland Ohio",
+    "phone": 123456,
+    "postcode": 1990,
+    "role": "USER"
+  },
+  {
+    "email": "kobebryant@gmail.com",
+    "username": "kobebryant",
+    "password": "1234",
+    "firstname": "Kobe",
+    "lastname": "Bryant",
+    "address": "Beverly Hills Los Angeles",
+    "phone": 123456,
+    "postcode": 1990,
+    "role": "ADMIN"
+  },
+  {
+    "email": "jerrywest@gmail.com",
+    "username": "jerrywest",
+    "password": "1234",
+    "firstname": "Jerry",
+    "lastname": "West",
+    "address": "Beverly Hills Los Angeles",
+    "phone": 123456,
+    "postcode": 1990,
+    "role": "USER"
+  },
+  {
+    "email": "magicjohnson@gmail.com",
+    "username": "magicjohnson",
+    "password": "1234",
+    "firstname": "Magic",
+    "lastname": "Johnson",
+    "address": "Beverly Hills Los Angeles",
+    "phone": 123456,
+    "postcode": 1990,
+    "role": "USER"
+  },
+  {
+    "email": "mikejordan@gmail.com",
+    "username": "mikejordan",
+    "password": "1234",
+    "firstname": "Michael",
+    "lastname": "Jordan",
+    "address": "Chicago Illinoi",
+    "phone": 123456,
+    "postcode": 2000,
+    "role": "ADMIN"
+  }
+]

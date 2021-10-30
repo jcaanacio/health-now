@@ -27,4 +27,14 @@ export class UserService implements IUserService {
   async create(input: IUser): Promise<User> {
     return await this._repository.create(input).save();
   }
+
+  async deleteMany(ids: string[]): Promise<User[] | null | undefined> {
+    const users = await this._repository.findByIds(ids);
+    users.map(async (user) => {
+      await user.remove();
+      await user.save();
+    });
+
+    return users;
+  }
 }

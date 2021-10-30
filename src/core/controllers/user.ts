@@ -114,4 +114,18 @@ export class UserKoaController implements IController<Koa.Context, Koa.Next> {
 
     ctx.status = 200;
   }
+
+  async deleteMany(
+    ctx: Koa.Context,
+    _next: () => Promise<Koa.Next>
+  ): Promise<void> {
+    const { userIds } = ctx.request.body;
+    const user = await service.deleteMany(userIds);
+
+    ctx.body = {
+      user: user,
+    };
+
+    ctx.status = 200;
+  }
 }

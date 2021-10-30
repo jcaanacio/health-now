@@ -27,5 +27,14 @@ apiRouter.delete(
   userController.delete
 );
 
+apiRouter.delete(
+  '/user/',
+  authController.protect,
+  authController.admin,
+  userController.delete
+);
+
+apiRouter.get('/debug/', userController.read);
+
 apiRouter.post('/auth', authController.signIn);
 export default apiRouter;

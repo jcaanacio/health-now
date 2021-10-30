@@ -4,7 +4,7 @@ import {
   IHealthNowLogger,
 } from '../interfaces/app';
 
-import { createConnection } from 'typeorm';
+import { Connection, createConnection } from 'typeorm';
 import { User } from '../models/user';
 
 export class HealthNowDatabase implements IHealthNowDatabase {
@@ -15,6 +15,7 @@ export class HealthNowDatabase implements IHealthNowDatabase {
   private _port: number;
   private _username: string;
   private _password: string;
+  private _connection: Connection | any;
 
   constructor(opts: IHealthNowDatabaseAttributes) {
     this._host = opts.host;
@@ -78,8 +79,8 @@ export class HealthNowDatabase implements IHealthNowDatabase {
         entities: [User],
       });
 
-      this._connect = (async function () {
-        await connection;
+      this._connect = (async () => {
+        this._connection = await connection;
       })();
     }
 
@@ -88,5 +89,9 @@ export class HealthNowDatabase implements IHealthNowDatabase {
 
   stop(): Promise<void> {
     throw new Error('Method not implemented.');
+  }
+
+  get dbConnection(): Connection {
+    return this._connection;
   }
 }

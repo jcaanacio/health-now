@@ -4,4 +4,5 @@ export interface IController<Context, Next> {
   readById(ctx: Context, next: () => Promise<Next>): Promise<void>;
   update(ctx: Context, next: () => Promise<Next>): Promise<void>;
   delete(ctx: Context, next: () => Promise<Next>): Promise<void>;
+  deleteMany(ctx: Context, next: () => Promise<Next>): Promise<void>;
 }

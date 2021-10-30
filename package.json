@@ -6,7 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "docker-up": "docker-compose -f docker-compose.yaml up -d",
-    "dev:local": "nodemon"
+    "dev:local": "nodemon",
+    "seed:create": "ts-node ./seeder.ts -i",
+    "seed:delete": "ts-node ./seeder.ts -d"
   },
   "keywords": [],
   "author": "",
@@ -15,6 +17,7 @@
     "apollo-server-koa": "^3.4.0",
     "bcrypt": "^5.0.1",
     "bluebird": "^3.7.2",
+    "fs": "^0.0.1-security",
     "jsonwebtoken": "^8.5.1",
     "koa": "^2.13.4",
     "koa-bodyparser": "^4.3.0",
