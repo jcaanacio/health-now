@@ -24,6 +24,14 @@ describe('DELETE/', async () => {
     await setup.stop();
   });
 
+  it('DELETE/: End point should be protected', async () => {
+    request(test?.app)
+      .delete(`/api/user/${test?.user.id?.toString()}`)
+      .end((_err, res) => {
+        expect(res.status).equal(403);
+      });
+  });
+
   it('DELETE/: Admins should be able to delete user', async () => {
     request(test?.app)
       .delete(`/api/user/${test?.user.id?.toString()}`)

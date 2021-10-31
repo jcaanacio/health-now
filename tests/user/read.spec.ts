@@ -23,6 +23,14 @@ describe('GET/', async () => {
     await setup.stop();
   });
 
+  it('GET/: End point should be protected', async () => {
+    request(test?.app)
+      .get(`/api/user/`)
+      .end((_err, res) => {
+        expect(res.status).equal(403);
+      });
+  });
+
   it('GET/: Admins should be able to get users', async () => {
     request(test?.app)
       .get(`/api/user/`)

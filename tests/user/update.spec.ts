@@ -23,6 +23,24 @@ describe('PATCH/', async () => {
     await setup.stop();
   });
 
+  it('PATCH/: End point should be protected', async () => {
+    const body = {
+      firstname: 'Jay',
+      lastname: 'Anacio',
+      address: 'Caloocan',
+      phone: 123456,
+      postcode: 1400,
+      role: 'USER',
+    };
+
+    request(test?.app)
+      .patch(`/api/user/${test?.user.id?.toString()}`)
+      .send(body)
+      .end((_err, res) => {
+        expect(res.status).equal(403);
+      });
+  });
+
   it('PATCH/: Admins should be able to update user', async () => {
     const body = {
       firstname: 'Jay',
