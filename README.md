@@ -44,5 +44,6 @@ To view api documentation kindly see
 ```
 # {host}:{port}/docs
 
-![alt text](https://github.com/jcaanacio/health-now/blob/master/swagger.png)
 ```
+
+![alt text](https://github.com/jcaanacio/health-now/blob/master/swagger.png)
