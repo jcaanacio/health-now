@@ -21,10 +21,10 @@ export const healthNowEncryption: IHealthNowEncryption = {
     return await bcrypt.compare(opts.inputPassword, opts.password);
   },
   decryptBase64: function (input: string): string {
-    return new Buffer(input, 'base64').toString();
+    return Buffer.from(input, 'base64').toString('binary');
   },
   encryptBase64: function (input: string): string {
-    return btoa(input);
+    return Buffer.from(input, 'binary').toString('base64');
   },
   token: {
     verify: function (token: string, options?: VerifyOptions): any {

@@ -86,7 +86,7 @@ export const setup = {
         userToken: string;
         app: IHealthNowBackendServer;
         port: number;
-        user: { id: number | undefined };
+        user: { id: number | undefined; username: string | undefined };
         user2: { id: number | undefined };
       }
     | undefined
@@ -141,7 +141,7 @@ export const setup = {
         userToken,
         app: app.api.server,
         port: app.api.port,
-        user: { id: testUser1?.id },
+        user: { id: testUser1?.id, username: testUser1?.username },
         user2: { id: testUser2?.id },
       };
     } catch (error) {

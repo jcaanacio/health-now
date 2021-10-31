@@ -77,7 +77,7 @@ export class UnSupportedAuthStrategyHttpError extends HealthNowHttpErrorHandler 
   constructor() {
     super();
     this.description = ErrorDescription.UnSupportedAuthStrategy;
-    this.scope = ErrorScope.User;
+    this.scope = ErrorScope.Client;
     this.status = ErrorStatusCode.UnAuthorized;
   }
 }
@@ -131,7 +131,7 @@ enum ErrorStatusCode {
   InternalServerError = 500,
 }
 
-enum ErrorDescription {
+export enum ErrorDescription {
   InsufficientAccessRights = 'Invalid access rights.',
   InvalidToken = 'Token is Invalid.',
   ExpiredToken = 'Token is already expired.',
@@ -146,7 +146,7 @@ enum ErrorDescription {
   InvalidCredentials = 'InvalidCredentials',
 }
 
-enum ErrorScope {
+export enum ErrorScope {
   Client = 'Client',
   Server = 'Server',
   User = 'User',
