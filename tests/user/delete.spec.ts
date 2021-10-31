@@ -3,6 +3,7 @@ import { describe } from 'mocha';
 import request from 'supertest';
 import { expect } from 'chai';
 import { IHealthNowBackendServer } from '../../src/core/interfaces/app';
+import { User } from '../../src/core/models/user';
 
 let test:
   | {
@@ -10,7 +11,7 @@ let test:
       userToken: string;
       app: IHealthNowBackendServer;
       port: number;
-      user: { id: number | undefined };
+      user: User;
       user2: { id: number | undefined };
     }
   | undefined;

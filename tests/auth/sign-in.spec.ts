@@ -8,6 +8,7 @@ import {
   ErrorDescription,
   ErrorScope,
 } from '../../src/core/adapters/http-error-handler';
+import { IUser } from '../../src/core/interfaces/entities/user';
 
 let test:
   | {
@@ -15,13 +16,10 @@ let test:
       userToken: string;
       app: IHealthNowBackendServer;
       port: number;
-      user: {
-        id: number | undefined;
-        username: string | undefined;
-      };
+      user: IUser;
     }
   | undefined;
-describe.only('AUTH/', async () => {
+describe('AUTH/', async () => {
   before('start backend', async () => {
     test = await setup.start();
   });
@@ -39,7 +37,6 @@ describe.only('AUTH/', async () => {
       .end((_err, res) => {
         expect(res.status).equal(200);
         expect(res.body.token).is.not.empty;
-        console.log(res.body);
       });
   });
 

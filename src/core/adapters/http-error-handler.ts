@@ -91,7 +91,7 @@ export class MissingFieldHttpError extends HealthNowHttpErrorHandler {
     super();
     this.description = ErrorDescription.MissingFields;
     this.scope = ErrorScope.User;
-    this.status = ErrorStatusCode.UnAuthorized;
+    this.status = ErrorStatusCode.PreconditionFailed;
     this.fields = fields;
   }
 }
@@ -122,12 +122,26 @@ export class InvalidCredentialsHttpError extends HealthNowHttpErrorHandler {
   }
 }
 
+export class FieldAreAlreadyInUseHttpError extends HealthNowHttpErrorHandler {
+  readonly description: string;
+  readonly scope: ErrorScope;
+  readonly status: ErrorStatusCode;
+  readonly fields: string[];
+  constructor(fields: string[]) {
+    super();
+    this.description = ErrorDescription.FieldsAreAlreadyInUse;
+    this.scope = ErrorScope.User;
+    this.status = ErrorStatusCode.PreconditionFailed;
+    this.fields = fields;
+  }
+}
+
 enum ErrorStatusCode {
   UnAuthorized = 401,
   InSufficientRights = 403,
   ResourceNotFound = 404,
   EmailIsAlreadyInUse = 409,
-  MissingRequiredFields = 412,
+  PreconditionFailed = 412,
   InternalServerError = 500,
 }
 
@@ -142,6 +156,7 @@ export enum ErrorDescription {
   UnAuthorized = 'Unauthorized to access this route.',
   UnSupportedAuthStrategy = 'Unsupported authentication strategy.',
   MissingFields = 'Missing Required Fields.',
+  FieldsAreAlreadyInUse = 'Fiels are already in use.',
   InvalidFieldFormat = 'Invalid Field Format.',
   InvalidCredentials = 'InvalidCredentials',
 }
