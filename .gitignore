@@ -1,5 +1,6 @@
 # Build
 node_modules/
+/build
 
 #Visual studio code
 /.vscode
