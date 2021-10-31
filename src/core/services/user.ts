@@ -1,4 +1,4 @@
-import { IUser } from '../interfaces/entities/user';
+import { IUser, UserRole } from '../interfaces/entities/user';
 import { IUserService } from '../interfaces/service';
 import { User } from '../models/user';
 
@@ -14,12 +14,22 @@ export class UserService implements IUserService {
   }
 
   async delete(id: string): Promise<User | null | undefined> {
-    const user = await this._repository.findOne(id);
+    const user = await this._repository.findOne({ where: { id } });
     if (!user) throw new Error('Resource not found');
     return await user.remove();
   }
 
-  async update(id: string, input?: IUser): Promise<User | null | undefined> {
+  async update(
+    id: string,
+    input?: {
+      firstname?: string;
+      lastname?: string;
+      address?: string;
+      phone?: number;
+      postcode?: number;
+      role?: UserRole;
+    }
+  ): Promise<User | null | undefined> {
     const user = await this._repository.update(id, { ...input });
     return user.raw;
   }

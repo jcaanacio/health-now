@@ -70,22 +70,12 @@ export class UserKoaController implements IController<Koa.Context, Koa.Next> {
   ): Promise<void> {
     const { userId } = ctx.params;
 
-    const {
-      email,
-      username,
-      password,
-      firstname,
-      lastname,
-      address,
-      phone,
-      postcode,
-      role,
-    } = ctx.request.body;
+    const { firstname, lastname, address, phone, postcode, role } =
+      ctx.request.body;
+
+    console.log('heeeere');
 
     const user = await service.update(userId, {
-      email,
-      username,
-      password,
       firstname,
       lastname,
       address,

@@ -30,6 +30,8 @@ export interface IHealthNowBackendServer {
   logger: IHealthNowLogger;
   start(): void;
   stop(): void;
+  server: any;
+  port: number;
 }
 
 export interface IHealthNowDatabaseAttributes {
@@ -43,7 +45,9 @@ export interface IHealthNowDatabaseAttributes {
 
 export interface IHealthNowDatabase
   extends IHealthNowDatabaseAttributes,
-    IHealthNowApplicationMethods {}
+    IHealthNowApplicationMethods {
+  dbConnection: any;
+}
 
 export interface IHealthNowApplication
   extends IHealthNowApplicationMethods,

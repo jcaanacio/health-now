@@ -10,12 +10,14 @@ import {
 import { TokenExpiredError } from 'jsonwebtoken';
 import { koaSwagger } from 'koa2-swagger-ui';
 import yamljs from 'yamljs';
+import { createHttpTerminator } from 'http-terminator';
 
 export class HealthNowKoaBackendServer implements IHealthNowBackendServer {
   private _koa: Koa;
   private _logger: IHealthNowLogger;
   private _port: number;
   private _router: Router;
+  server: any;
 
   constructor(opts: {
     logger: IHealthNowLogger;
@@ -68,7 +70,7 @@ export class HealthNowKoaBackendServer implements IHealthNowBackendServer {
   }
 
   start(): Koa {
-    this._koa.listen(this._port, () => {
+    this.server = this._koa.listen(this._port, () => {
       this._logger.info({
         module: 'KOA',
         message: `Server ready at http://localhost:${this._port}`,
@@ -78,7 +80,18 @@ export class HealthNowKoaBackendServer implements IHealthNowBackendServer {
     return this._koa;
   }
 
-  stop(): void {
-    throw new Error('Method not implemented.');
+  async stop(): Promise<void> {
+    if (this.server) {
+      const koa = this.server;
+      const httpTerminator = createHttpTerminator({
+        server: koa,
+      });
+
+      await httpTerminator.terminate();
+    }
+  }
+
+  get port(): number {
+    return this._port;
   }
 }

@@ -6,14 +6,24 @@ const userController = new UserKoaController();
 const authController = new AuthenticatonController();
 
 const apiRouter = new KoaRouter({ prefix: '/api' });
-apiRouter.post('/user', userController.create);
+apiRouter.post(
+  '/user',
+  authController.protect,
+  authController.admin,
+  userController.create
+);
 apiRouter.get(
   '/user',
   authController.protect,
   authController.admin,
   userController.read
 );
-apiRouter.get('/user/:userId', userController.readById);
+apiRouter.get(
+  '/user/:userId',
+  authController.protect,
+  authController.admin,
+  userController.readById
+);
 apiRouter.patch(
   '/user/:userId',
   authController.protect,
