@@ -73,8 +73,6 @@ export class UserKoaController implements IController<Koa.Context, Koa.Next> {
     const { firstname, lastname, address, phone, postcode, role } =
       ctx.request.body;
 
-    console.log('heeeere');
-
     const user = await service.update(userId, {
       firstname,
       lastname,

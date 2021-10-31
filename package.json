@@ -9,7 +9,9 @@
     "dev:local": "nodemon",
     "seed:create": "ts-node ./seeder.ts -i",
     "seed:delete": "ts-node ./seeder.ts -d",
-    "start": "ts-node index.ts"
+    "start": "ts-node index.ts",
+    "build": "tsc --build",
+    "build:clean": "tsc --build --clean"
   },
   "keywords": [],
   "author": "",
